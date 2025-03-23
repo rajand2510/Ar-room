@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared AR Room</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        model-viewer {
+            width: 100%;
+            height: 500px;
+        }
+        #ar-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Shared AR Room</h2>
+    
+    <model-viewer 
+        id="ar-model"
+        src="classic_table_lamp.glb"
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        auto-rotate>
+        <button slot="ar-button" id="ar-button">View in AR</button>
+    </model-viewer>
+
+</body>
+</html>
