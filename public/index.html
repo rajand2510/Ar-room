@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shared AR Room</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script defer src="script.js"></script>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="script.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,15 +30,15 @@
 
     <h2>Shared AR Room</h2>
     
-    <model-viewer 
-        id="ar-model"
-        src="classic_table_lamp.glb"
-        ar 
-        ar-modes="webxr scene-viewer quick-look" 
-        camera-controls 
-        auto-rotate>
-        <button slot="ar-button" id="ar-button">View in AR</button>
-    </model-viewer>
+    <model-viewer id="ar-model"
+    src="classic_table_lamp.glb"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    auto-rotate>
+    <button slot="ar-button" id="ar-button">View in AR</button>
+  </model-viewer>
+  
 
 </body>
 </html>

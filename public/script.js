@@ -1,11 +1,12 @@
-const socket = io("https://ar-room.onrender.com");  // Connect to WebSocket server
-const modelViewer = document.querySelector("#ar-model");
+ // Connect to WebSocket server
+const socket = io("https://your-backend.onrender.com"); // Replace with your Render WebSocket URL
+const model = document.querySelector("#ar-model");
 const arButton = document.querySelector("#ar-button");
 
-// Enter AR mode on button click
+// Check if AR is supported and enable button
 arButton.addEventListener("click", () => {
-    if (modelViewer.canActivateAR) {
-        modelViewer.enterAR();  // ✅ Correct function
+    if (model.canActivateAR) {
+        model.activateAR();
     } else {
         alert("AR is not supported on this device.");
     }
@@ -13,11 +14,15 @@ arButton.addEventListener("click", () => {
 
 // Listen for object updates from the server
 socket.on("update-object", (position) => {
-    modelViewer.setAttribute("camera-target", `${position.x}m ${position.y}m ${position.z}m`);
+    model.style.transform = `translate3d(${position.x}px, ${position.y}px, ${position.z}px)`;
 });
 
-// When the user places the object, update the server
-modelViewer.addEventListener("quick-look-browsing", (event) => {
-    const position = { x: event.detail.x, y: event.detail.y, z: event.detail.z };
+// When the user places the model in AR, update the server
+model.addEventListener("ar-placement", (event) => {
+    const position = {
+        x: event.detail.x,
+        y: event.detail.y,
+        z: event.detail.z
+    };
     socket.emit("place-object", position);
 });
