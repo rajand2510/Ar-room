@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000");  // Connect to WebSocket server
+const socket = io("https://ar-room.onrender.com");  // Connect to WebSocket server
 const modelViewer = document.querySelector("#ar-model");
 const arButton = document.querySelector("#ar-button");
 
